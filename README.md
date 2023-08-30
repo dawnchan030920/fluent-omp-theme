@@ -1,6 +1,6 @@
-# Fluent oh-my-posh theme
+# fluent-style oh-my-posh theme
 
-This is the fluent-style `oh-my-posh` theme.
+This is a fluent-style `oh-my-posh` theme.
 
 ## Screenshot
 
