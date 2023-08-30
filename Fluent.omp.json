@@ -1,0 +1,178 @@
+{
+    "$schema": "https://raw.fastgit.org/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+    "blocks": [
+        {
+            "alignment": "left",
+            "segments": [
+                {
+                    "style": "powerline",
+                    "template": "{{ if .SSHSession }}\uf817 {{ end }}\uf007 {{ .UserName }} | {{ .HostName }} \uf108  ",
+                    "powerline_symbol": "\ue0b0",
+                    "type": "session",
+                    "background": "#2b2b2b",
+                    "foreground": "p:neutral.white"
+                },
+                {
+                    "type": "path",
+                    "style": "powerline",
+                    "powerline_symbol": "\ue0b0",
+                    "background": "#005a9e",
+                    "foreground": "#ffffff",
+                    "template": " {{.Path}} ",
+                    "properties": {
+                        "folder_separator_icon": " \uf061 ",
+                        "home_icon": "\uf015",
+                        "folder_icon": "\uf07b"
+                    }
+                },
+                {
+                    "type": "git",
+                    "style": "powerline",
+                    "powerline_symbol": "\ue0b0",
+                    "template": " {{.UpstreamIcon}} {{ .HEAD }}{{ .BranchStatus }}{{ if .Working.Changed }} \uF044 {{ .Working.String }}{{ end }}{{ if and (.Staging.Changed) (.Working.Changed) }} |{{ end }}{{ if .Staging.Changed }} \uF046 {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0}} \uF692 {{ .StashCount }}{{ end }}{{ if gt .WorktreeCount 0}} \uf1bb {{ .WorktreeCount }}{{ end }} ",
+                    "properties": {
+                        "fetch_stash_count": true,
+                        "fetch_status": true,
+                        "fetch_upstream_icon": true,
+                        "fetch_worktree_count": true,
+                        "branch_icon": "\ue725 "
+                    },
+                    "background_templates": [
+                        "{{ if or (.Working.Changed) (.Staging.Changed) }}#ffb900{{ end }}",
+                        "{{ if and (gt .Ahead 0) (gt .Behind 0) }}#0078d4{{ end }}",
+                        "{{ if gt .Ahead 0 }}#008272{{ end }}",
+                        "{{ if gt .Behind 0 }}#b4a0ff{{ end }}",
+                        "{{ if .UpstreamGone}}#004578{{end}}"
+                    ],
+                    "foreground": "#FFFFFF",
+                    "background": "#0078d4"
+                }
+            ],
+            "type": "prompt"
+        },
+        {
+            "type": "prompt",
+            "alignment": "right",
+            "segments": [
+                {
+                    "type": "node",
+                    "style": "diamond",
+                    "leading_diamond": "\ue0b6",
+                    "trailing_diamond": "\ue0b4",
+                    "background": "#6b9e68",
+                    "foreground": "#ffffff",
+                    "template": "\uE718  {{ .Full }} "
+                },
+                {
+                    "type": "dotnet",
+                    "style": "diamond",
+                    "leading_diamond": "\ue0b6",
+                    "trailing_diamond": "\ue0b4",
+                    "background": "#56368e",
+                    "foreground": "#ffffff",
+                    "template": "\uE77F  {{ .Full }} "
+                },
+                {
+                    "type": "battery",
+                    "style": "diamond",
+                    "leading_diamond": " \ue0b6",
+                    "trailing_diamond": "\ue0b4",
+                    "template": "{{ if not .Error }}{{ .Icon }}  {{ .Percentage }} %{{ end }}{{ .Error }}",
+                    "background_templates": [
+                        "{{if eq \"Charging\" .State.String}}#fff4ce{{end}}",
+                        "{{if eq \"Discharging\" .State.String}}#fde7e9{{end}}",
+                        "{{if eq \"Full\" .State.String}}#dff6dd{{end}}"
+                    ],
+                    "foreground_templates": [
+                        "{{if eq \"Charging\" .State.String}}#797673{{end}}",
+                        "{{if eq \"Discharging\" .State.String}}#a80000{{end}}",
+                        "{{if eq \"Full\" .State.String}}#107c10{{end}}"
+                    ],
+                    "properties": {
+                        "charging_icon": "\uf0e7",
+                        "discharging_icon": "\uf244",
+                        "charged_icon": "\uf06c"
+                    }
+                },
+                {
+                    "type": "time",
+                    "style": "plain",
+                    "foreground": "#4cc2ff",
+                    "template": "  {{ .CurrentDate | date .Format }} \uf017"
+                }
+            ]
+        },
+        {
+            "newline": true,
+            "type": "prompt",
+            "alignment": "left",
+            "segments": [
+                {
+                    "type": "os",
+                    "style": "plain",
+                    "template": " {{ if .WSL }}WSL at {{ end }}{{.Icon}}",
+                    "properties": {
+                        "windows": "\uf871"
+                    },
+                    "foreground": "#4cc2ff"
+                },
+                {
+                    "type": "shell",
+                    "style": "plain",
+                    "properties": {
+                        "mapped_shell_names": {
+                            "pwsh": "PS"
+                        }
+                    }
+                },
+                {
+                    "type": "text",
+                    "style": "plain",
+                    "template": "\u279c ",
+                    "foreground": "#2b88d8"
+                }
+            ]
+        }
+    ],
+    "palette": {
+        "neutral.black": "#000000",
+        "neutral.gray10": "#faf9f8",
+        "neutral.gray100": "#979593",
+        "neutral.gray110": "#8a8886",
+        "neutral.gray120": "#797775",
+        "neutral.gray130": "#605e5c",
+        "neutral.gray140": "#484644",
+        "neutral.gray150": "#3b3a39",
+        "neutral.gray160": "#323130",
+        "neutral.gray170": "#292827",
+        "neutral.gray180": "#252423",
+        "neutral.gray190": "#201f1e",
+        "neutral.gray20": "#f3f2f1",
+        "neutral.gray200": "#1b1a19",
+        "neutral.gray210": "#161514",
+        "neutral.gray220": "#11100f",
+        "neutral.gray30": "#edebe9",
+        "neutral.gray40": "#e1dfdd",
+        "neutral.gray50": "#d2d0ce",
+        "neutral.gray60": "#c8c6c4",
+        "neutral.gray70": "#bebbb8",
+        "neutral.gray80": "#b3b0ad",
+        "neutral.gray90": "#a19f9d",
+        "neutral.white": "#ffffff",
+        "slot.black": "p:neutral.black",
+        "slot.neutralDark": "p:neutral.gray190",
+        "slot.neutralLight": "p:neutral.gray30",
+        "slot.neutralLighter": "p:neutral.gray20",
+        "slot.neutralLighterAlt": "p:neutral.gray10",
+        "slot.neutralPrimary": "p:neutral.gray160",
+        "slot.neutralPrimaryAlt": "p:neutral.gray150",
+        "slot.neutralQuaternary": "p:neutral.gray50",
+        "slot.neutralQuaternaryAlt": "p:neutral.gray40",
+        "slot.neutralSecondary": "p:neutral.gray130",
+        "slot.neutralTertiary": "p:neutral.gray90",
+        "slot.neutralTertiaryAlt": "p:neutral.gray60",
+        "slot.neutralWhite": "p:neutral.white"
+    },
+    "version": 2,
+    "terminal_background": "#202020"
+}
